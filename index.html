@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>职刻-测试 安装</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      overflow: hidden;
+    }
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+    .app-name {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .app-meta {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-bottom: 36px;
+    }
+    .install-btn {
+      display: block;
+      width: 100%;
+      padding: 17px 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    }
+    .install-btn:active {
+      transform: translateY(0);
+    }
+    .instructions {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      line-height: 1.7;
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .instructions strong {
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+    .version-badge {
+      display: inline-block;
+      background: rgba(102,126,234,0.25);
+      color: #a3bffa;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(102,126,234,0.3);
+    }
+    .footer {
+      margin-top: 24px;
+      color: rgba(255,255,255,0.2);
+      font-size: 11px;
+    }
+    .footer a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="app-icon">
+        <img src="icon.png" alt="icon" onerror="this.style.display='none'">
+      </div>
+      <div class="version-badge">Ad Hoc · v1.0.9 (Build 1)</div>
+      <div class="app-name">职刻-测试</div>
+      <div class="app-meta">com.zhike.beta · iOS</div>
+
+      <a id="installBtn" class="install-btn" href="itms-services://?action=download-manifest&url=https://iyxooo.github.io/ios-dist/manifest.plist">
+        📲 安装 App
+      </a>
+
+      <div class="instructions">
+        <strong>安装说明</strong><br>
+        1. 点击上方「安装 App」按钮<br>
+        2. 在弹出对话框中点击「允许」<br>
+        3. 前往「设置 → 通用 → VPN与设备管理」信任证书<br>
+        4. 返回桌面打开 App
+      </div>
+
+      <div class="footer">
+        通过 GitHub Pages 分发 · <a href="https://github.com/iyxooo/ios-dist">源码</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 检测是否为 iOS 设备
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    var btn = document.getElementById('installBtn');
+
+    if (!isIOS) {
+      btn.innerHTML = '⚠️ 请在 iOS 设备上打开此页面';
+      btn.style.background = 'rgba(255,255,255,0.1)';
+      btn.style.pointerEvents = 'none';
+    }
+  </script>
+</body>
+</html>
